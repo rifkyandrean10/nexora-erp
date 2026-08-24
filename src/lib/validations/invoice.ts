@@ -8,18 +8,12 @@ export const invoiceSchema = z.object({
     .max(100, "Nomor invoice maksimal 100 karakter."),
 
   type: z.enum(["SALE", "PURCHASE"], {
-    errorMap: () => ({ message: "Tipe invoice tidak valid." }),
+    message: "Tipe invoice tidak valid.",
   }),
 
-  dueDate: z
-    .string()
-    .min(1, "Tanggal jatuh tempo wajib diisi.")
-    .transform((val) => new Date(val)),
+  dueDate: z.coerce.date({ message: "Tanggal jatuh tempo wajib diisi." }),
 
-  issueDate: z
-    .string()
-    .min(1, "Tanggal penerbitan wajib diisi.")
-    .transform((val) => new Date(val)),
+  issueDate: z.coerce.date({ message: "Tanggal penerbitan wajib diisi." }),
 
   saleId: z
     .string()
@@ -40,4 +34,5 @@ export const invoiceSchema = z.object({
     .positive("Total amount harus lebih besar dari 0."),
 });
 
-export type InvoiceInput = z.infer<typeof invoiceSchema>;
+export type InvoiceInput = z.input<typeof invoiceSchema>;
+

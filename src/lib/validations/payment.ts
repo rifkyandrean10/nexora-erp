@@ -11,17 +11,14 @@ export const paymentSchema = z.object({
     .min(1, "Nomor pembayaran wajib diisi.")
     .max(100, "Nomor pembayaran maksimal 100 karakter."),
 
-  paymentDate: z
-    .string()
-    .min(1, "Tanggal pembayaran wajib diisi.")
-    .transform((val) => new Date(val)),
+  paymentDate: z.coerce.date({ message: "Tanggal pembayaran wajib diisi." }),
 
   amount: z
     .number()
     .positive("Jumlah pembayaran harus lebih besar dari 0."),
 
   method: z.enum(["CASH", "BANK_TRANSFER", "CREDIT_CARD", "OTHER"], {
-    errorMap: () => ({ message: "Metode pembayaran tidak valid." }),
+    message: "Metode pembayaran tidak valid.",
   }),
 
   reference: z
@@ -39,4 +36,5 @@ export const paymentSchema = z.object({
     .or(z.literal("")),
 });
 
-export type PaymentInput = z.infer<typeof paymentSchema>;
+export type PaymentInput = z.input<typeof paymentSchema>;
+

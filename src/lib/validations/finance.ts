@@ -7,10 +7,7 @@ export const expenseSchema = z.object({
     .min(1, "Nomor pengeluaran wajib diisi.")
     .max(100, "Nomor pengeluaran maksimal 100 karakter."),
 
-  date: z
-    .string()
-    .min(1, "Tanggal wajib diisi.")
-    .transform((val) => new Date(val)),
+  date: z.coerce.date({ message: "Tanggal wajib diisi." }),
 
   category: z
     .string()
@@ -37,10 +34,7 @@ export const revenueSchema = z.object({
     .min(1, "Nomor pendapatan wajib diisi.")
     .max(100, "Nomor pendapatan maksimal 100 karakter."),
 
-  date: z
-    .string()
-    .min(1, "Tanggal wajib diisi.")
-    .transform((val) => new Date(val)),
+  date: z.coerce.date({ message: "Tanggal wajib diisi." }),
 
   category: z
     .string()
@@ -67,13 +61,10 @@ export const cashFlowSchema = z.object({
     .min(1, "Nomor entri wajib diisi.")
     .max(100, "Nomor entri maksimal 100 karakter."),
 
-  date: z
-    .string()
-    .min(1, "Tanggal wajib diisi.")
-    .transform((val) => new Date(val)),
+  date: z.coerce.date({ message: "Tanggal wajib diisi." }),
 
   type: z.enum(["INFLOW", "OUTFLOW"], {
-    errorMap: () => ({ message: "Tipe arus kas tidak valid." }),
+    message: "Tipe arus kas tidak valid.",
   }),
 
   amount: z
@@ -101,6 +92,7 @@ export const cashFlowSchema = z.object({
     .or(z.literal("")),
 });
 
-export type ExpenseInput = z.infer<typeof expenseSchema>;
-export type RevenueInput = z.infer<typeof revenueSchema>;
-export type CashFlowInput = z.infer<typeof cashFlowSchema>;
+export type ExpenseInput = z.input<typeof expenseSchema>;
+export type RevenueInput = z.input<typeof revenueSchema>;
+export type CashFlowInput = z.input<typeof cashFlowSchema>;
+
