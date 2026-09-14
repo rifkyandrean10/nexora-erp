@@ -4,7 +4,7 @@ import { useState } from "react";
 import { signOut } from "next-auth/react";
 import type { NavigationGroup } from "./navigation";
 import { Sidebar } from "./sidebar";
-import { Menu, LogOut, Building, Bell, Search, ShieldCheck } from "lucide-react";
+import { Menu, LogOut, Building, Bell } from "lucide-react";
 
 type DashboardUser = {
   name: string;
@@ -116,4 +116,4 @@ export function DashboardShell({
       </div>
     </div>
   );
-}
+}

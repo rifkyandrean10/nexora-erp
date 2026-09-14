@@ -181,7 +181,7 @@ export function CashFlowPage({ cashFlows }: CashFlowPageProps) {
                 <label className="block text-xs font-semibold text-slate-500 uppercase">Jenis Arus Kas</label>
                 <select
                   value={type}
-                  onChange={(e) => setType(e.target.value as any)}
+                  onChange={(e) => setType(e.target.value as "INFLOW" | "OUTFLOW")}
                   className="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:outline-none"
                 >
                   <option value="INFLOW">KAS MASUK (Inflow)</option>

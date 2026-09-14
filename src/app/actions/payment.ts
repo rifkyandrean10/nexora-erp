@@ -221,10 +221,10 @@ export async function createPayment(input: PaymentInput) {
       message: "Pembayaran berhasil dicatat.",
       data: serializePayment(result),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     return {
       success: false,
-      message: error.message || "Gagal mencatat pembayaran.",
+      message: error instanceof Error ? error.message : "Gagal mencatat pembayaran.",
     };
   }
 }

@@ -18,7 +18,6 @@ import {
   ShieldCheck,
   Zap,
   ArrowRight,
-  Clock
 } from "lucide-react";
 
 export default async function DashboardPage() {
@@ -261,4 +260,4 @@ export default async function DashboardPage() {
       </div>
     </div>
   );
-}
+}

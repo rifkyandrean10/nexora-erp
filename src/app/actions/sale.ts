@@ -456,10 +456,10 @@ export async function confirmSale(id: string) {
       message: "Penjualan dikonfirmasi dan Invoice diterbitkan otomatis.",
       data: serializeSale(result),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     return {
       success: false,
-      message: error.message || "Gagal mengonfirmasi penjualan.",
+      message: error instanceof Error ? error.message : "Gagal mengonfirmasi penjualan.",
     };
   }
 }
@@ -562,10 +562,10 @@ export async function shipSale(id: string) {
       message: "Penjualan berhasil dikirim dan stok gudang dikurangi.",
       data: serializeSale(result),
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     return {
       success: false,
-      message: error.message || "Gagal mengirim penjualan.",
+      message: error instanceof Error ? error.message : "Gagal mengirim penjualan.",
     };
   }
 }

@@ -4,9 +4,7 @@ import {
   Building2,
   Package,
   ShoppingCart,
-  Users,
   Receipt,
-  TrendingUp,
   ShieldCheck,
   BarChart3,
   ArrowRight,
@@ -230,10 +228,10 @@ export default async function Home() {
                   <span className="text-xs font-mono text-slate-500">organization_security_matrix.json</span>
                 </div>
                 <div className="mt-4 space-y-2 font-mono text-xs text-slate-300">
-                  <p><span className="text-purple-400">"module"</span>: <span className="text-emerald-400">"INVENTORY"</span>,</p>
-                  <p><span className="text-purple-400">"actions"</span>: [<span className="text-emerald-400">"VIEW"</span>, <span className="text-emerald-400">"CREATE"</span>, <span className="text-emerald-400">"EDIT"</span>],</p>
-                  <p><span className="text-purple-400">"tenant_isolation"</span>: <span className="text-indigo-400">true</span>,</p>
-                  <p><span className="text-purple-400">"status"</span>: <span className="text-emerald-400">"ENFORCED_ACTIVE"</span></p>
+                  <p><span className="text-purple-400">&quot;module&quot;</span>: <span className="text-emerald-400">&quot;INVENTORY&quot;</span>,</p>
+                  <p><span className="text-purple-400">&quot;actions&quot;</span>: [<span className="text-emerald-400">&quot;VIEW&quot;</span>, <span className="text-emerald-400">&quot;CREATE&quot;</span>, <span className="text-emerald-400">&quot;EDIT&quot;</span>],</p>
+                  <p><span className="text-purple-400">&quot;tenant_isolation&quot;</span>: <span className="text-indigo-400">true</span>,</p>
+                  <p><span className="text-purple-400">&quot;status&quot;</span>: <span className="text-emerald-400">&quot;ENFORCED_ACTIVE&quot;</span></p>
                 </div>
               </div>
             </div>

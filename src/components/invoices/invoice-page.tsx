@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { createPayment } from "@/app/actions/payment";
 
 type Invoice = {
@@ -59,10 +59,12 @@ export function InvoicePage({ invoices }: InvoicePageProps) {
   const [notes, setNotes] = useState("");
   const [error, setError] = useState("");
   const [isPending, startTransition] = useTransition();
+  const paymentSequence = useRef(0);
 
   const handleOpenPayModal = (invoice: Invoice) => {
     setPayInvoice(invoice);
-    setPaymentNumber(`PAY-${Date.now().toString().slice(-8)}`);
+    paymentSequence.current += 1;
+    setPaymentNumber(`PAY-${invoice.invoiceNumber}-${paymentSequence.current}`);
     setAmount(Number(invoice.totalAmount) - Number(invoice.paidAmount));
     setError("");
   };
@@ -371,7 +373,9 @@ export function InvoicePage({ invoices }: InvoicePageProps) {
                 <label className="block text-xs font-semibold text-slate-500 uppercase">Metode Pembayaran</label>
                 <select
                   value={method}
-                  onChange={(e) => setMethod(e.target.value as any)}
+                  onChange={(e) =>
+                    setMethod(e.target.value as "CASH" | "BANK_TRANSFER" | "CREDIT_CARD" | "OTHER")
+                  }
                   className="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-xs focus:outline-none"
                 >
                   <option value="CASH">CASH</option>
